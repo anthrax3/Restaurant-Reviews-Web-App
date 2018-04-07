@@ -1,0 +1,21 @@
+﻿@model MvcApplication2.Models.Restaurant
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<div class="container">
+    <h2>Reviews for @Model.Name</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create", new { restaurantId = Model.Id })
+    </p>
+    @Html.Partial("_Reviews", Model.Reviews);
+    <p>
+        @Html.ActionLink("Back to list","Index", "Restaurant")
+    </p>
+</div>
+

@@ -1,0 +1,43 @@
+﻿@model IPagedList<RestaurantListViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="height:400px; background-image:url(../../Images2/pozadina.jpg)">
+    <div class="container" style="float:right">
+        <h1 style="color:white">Find your Restaurant</h1>
+        <form method="get" action="@Url.Action("Index")"
+              data-otf-ajax="true" data-otf-target="#restaurantList">
+            <div class="col-lg-6" style="background-color:none;border:0px white;">
+                <div class="input-group">
+
+                    <input type="search" class="form-control" name="searchterm" data-otf-autocomplete="@Url.Action("Autocomplete")" />
+                    
+                <span class="input-group-btn">
+                        <input type="submit" class="btn btn-default" value="Search by Name" />
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    
+    @*@{
+        var amount = 10.0m;
+        var someDate = new DateTime(2002, 7, 9);
+    }
+
+    <div>
+        @MvcApplication2.Views.Home.Resources.Greeting
+    </div>
+    <div>
+        @amount.ToString("c")
+    </div>
+    <div>
+        @someDate.ToShortDateString()
+    </div>*@
+    @Html.Partial("_Restaurants", Model)
+</div>

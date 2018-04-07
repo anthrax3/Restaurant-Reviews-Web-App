@@ -1,0 +1,53 @@
+﻿@model MvcApplication2.Models.Restaurant
+
+@{
+    ViewBag.Title = "Create";
+}
+<br/>
+<br />
+<div class="container">
+
+    <h2>Create</h2>
+
+    @using (Html.BeginForm("UploadFile", "Restaurant", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <table class="table table-responsive table-striped">
+            <tr>
+                <td>@Html.LabelFor(model => model.Name)</td>
+                <td>@Html.EditorFor(model => model.Name)</td>
+                <td>@Html.ValidationMessageFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.City)</td>
+                <td>@Html.EditorFor(model => model.City)</td>
+                <td>@Html.ValidationMessageFor(model => model.City)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Country)</td>
+                <td>@Html.EditorFor(model => model.Country)</td>
+                <td>@Html.ValidationMessageFor(model => model.Country)</td>
+            </tr>
+            <tr>
+                <td>Upload Image:</td>
+                <td><input type="file" name="file" id="file" style="width: 100%;" /> <br /></td>
+                <td></td>
+            </tr>
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+
+        </table>
+    }
+    <div>
+        @Html.ActionLink("Back to List","Index", "Restaurant")
+    </div>
+
+    @section Scripts {
+
+    }
+
+</div>

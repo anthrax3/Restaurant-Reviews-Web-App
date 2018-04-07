@@ -1,0 +1,29 @@
+﻿@model MvcApplication2.Models.AboutModel
+@{
+    ViewBag.Title = "About";
+}
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">History of The RestaurantReviewer</a></li>
+        <li><a href="#profile" data-toggle="tab">Our Staff</a></li>
+        <li><a href="#messages" data-toggle="tab">Contact</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="home">
+            <br>In 1939, Jess MIDdaugh and Sam CampBELL decided to start a restaurant business in Fort Dodge, Iowa. Midbell Restaurants emerged to provide products and services to the Fort Dodge Restaurant community. In the 1960’s, the company extended their presence in northwest Iowa and opened stores in Jefferson, Webster City, and Storm Lake. As school music business expanded, the company also acquired stores in Spencer, Iowa and Mankato and Fairmont, Minnesota.
+
+            Ray Guntren began working at Storm Lake Midbell Music in 1969 as an apprentice technician. In 1972 Ray was offered the position of manager at the newly opened Sioux City store.In 1976, several employees joined the corporation by purchasing stock options in Midbell Music Company, Inc. In 1980, Midbell Music Company, Inc. dissolved and four new corporations were formed to purchase the remaining branch stores in Storm Lake, Fort Dodge, and Sioux City, Iowa and Mankato, Minnesota. Ray Guntren formed a partnership with Joe McCormick for purchase of the Sioux City store. In 1982, he acquired all shares in the Sioux City store from partner shareholder.
+          </div>
+        
+        <div class="tab-pane fade" id="profile"><br>A cool guy named Dave <br> Another cool guy called Chuck<br>An asian guy named Wong<br>The gingerhead Sally<br>Jenn<br>James<br>And our boss Samuel L. Jackson</div>
+        <div class="tab-pane fade" id="messages"><br />Email: therestaurantreviewer@gmail.com <br /> Telefone: +389 78 838 222 <br />Person for contact: @Model.Name<br /> @Model.Location</div>   
+    </div>
+    <br />
+    <br />
+</div>

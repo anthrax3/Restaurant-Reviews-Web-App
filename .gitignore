@@ -27,6 +27,9 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
+MvcApplication2.Tests
+packages
+TestResults
 
 # Thumbnails
 ._*

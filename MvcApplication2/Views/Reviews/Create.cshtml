@@ -1,0 +1,53 @@
+﻿@model MvcApplication2.Models.RestaurnatReview
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+    <h2>Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>New Review</legend>
+            <table class="table table-responsive table-striped">
+                <tr><td>@Html.LabelFor(model => model.Rating)</td><td>@Html.EditorFor(model => model.Rating)</td><td>@Html.ValidationMessageFor(model => model.Rating)</td></tr>
+                <tr><td>@Html.LabelFor(model => model.Body)</td><td>@Html.EditorFor(model => model.Body)</td><td>@Html.ValidationMessageFor(model => model.Body)</td></tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.ReviewerName)</td>
+                    <td>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <label>@User.Identity.Name</label>
+                            
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.ReviewerName)
+                        }
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.ReviewerName)
+                    </td>
+                </tr>
+                <tr><td></td><td></td><td></td></tr>
+            </table>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+
+    }
+</div>

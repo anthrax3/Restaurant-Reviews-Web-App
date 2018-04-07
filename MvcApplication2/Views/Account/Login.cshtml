@@ -1,0 +1,52 @@
+﻿@model MvcApplication2.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<hr />
+
+<div class="container">
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+<h2>Use a local account to log in.</h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <table class="table table-responsive table-striped">
+        <tr><td>@Html.LabelFor(m => m.UserName)</td><td>@Html.TextBoxFor(m => m.UserName)</td><td>@Html.ValidationMessageFor(m => m.UserName)</td></tr>
+        <tr><td>@Html.LabelFor(m => m.Password)</td><td>@Html.PasswordFor(m => m.Password)</td><td>@Html.ValidationMessageFor(m => m.Password)</td></tr>
+        <tr>
+            <td>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+        </td>
+         <td></td><td></td>
+        </tr>
+        
+    </table>
+    <div style="float:left">
+        <input type="submit" value="Log in" />
+            <span>
+                @Html.ActionLink("Register", "Register") if you don't have an account.
+             </span>
+    </div>
+}
+    <hr />
+    <div class="form-horizontal" >
+        <section id=" socialloginform">
+        <h2>Use another service to log in.</h2>
+        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+            
+       
+    </div>
+</section>
+   
+@section Scripts {
+    
+}
+</div>

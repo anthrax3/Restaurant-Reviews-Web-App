@@ -1,0 +1,58 @@
+﻿@model MvcApplication2.Models.RestaurnatReview
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+    <h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Edit Review</legend>
+
+            @Html.HiddenFor(model => model.Id)
+
+            <table class="table table-responsive table-striped">
+                <tr><td>@Html.LabelFor(model => model.Rating)</td><td>@Html.EditorFor(model => model.Rating)</td><td>@Html.ValidationMessageFor(model => model.Rating)</td></tr>
+                <tr><td>@Html.LabelFor(model => model.Body)</td><td>@Html.EditorFor(model => model.Body)</td><td>@Html.ValidationMessageFor(model => model.Body)</td></tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.ReviewerName)</td>
+                    <td>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <label>@User.Identity.Name</label>
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.ReviewerName)
+                        }
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.ReviewerName)
+                    </td>
+                </tr>
+                <tr><td></td><td></td><td></td></tr>
+            </table>
+
+
+
+            @Html.HiddenFor(model => model.RestaurantId);
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", new { id = Model.RestaurantId },null)
+    </div>
+
+    @section Scripts {
+
+    }
+</div>

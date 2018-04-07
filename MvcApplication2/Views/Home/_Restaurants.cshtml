@@ -1,0 +1,37 @@
+﻿@model IPagedList<RestaurantListViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="restaurantList">
+
+    <div class="pagedList" data-otf-target="#restaurantList">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+        PagedListRenderOptions.MinimalWithItemCountText)
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+                <div class="col-lg-4 text-center">
+                    @*<img class="img-circle" src="@item.RestaurantImage.FileName" alt="Generic place holder" />*@
+                    @if (item.RestaurantImage != null)
+                    {
+                        <div class="center-block"><img class="img-circle" src="~/Images2/@item.RestaurantImage" width="200" height="200" /></div>
+                    }
+                    else
+                    {
+                        <div class="center-block"><img class="img-circle" src="~/Images2/abbbb.png" width="200" height="200" /></div>
+                    }
+
+                    <h2>@item.Name</h2>
+                    <p>@item.City, @item.Country</p>
+                    <p class="btn btn-default">@Html.ActionLink("Read the Reviews", "Index", "Reviews", new { id = item.Id }, null) &raquo;</p>
+                    <p>
+                        Number of Reviews:@item.CountOfReviews
+                    </p>
+                </div><!-- /.col-lg-4 -->
+        }
+    </div>
+</div>

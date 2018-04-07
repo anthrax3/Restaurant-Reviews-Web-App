@@ -1,0 +1,38 @@
+﻿@model MvcApplication2.Models.Restaurant
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+    <h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Restaurant</legend>
+
+            @Html.HiddenFor(model => model.Id)
+
+            <table class="table table-responsive table-striped">
+                <tr><td>@Html.LabelFor(model => model.Name)</td><td>@Html.EditorFor(model => model.Name)</td><td>@Html.ValidationMessageFor(model => model.Name)</td></tr>
+                <tr><td>@Html.LabelFor(model => model.City)</td><td>@Html.EditorFor(model => model.City)</td><td>@Html.ValidationMessageFor(model => model.City)</td></tr>
+                <tr><td>@Html.LabelFor(model => model.Country)</td><td>@Html.EditorFor(model => model.Country)</td><td>@Html.ValidationMessageFor(model => model.Country)</td></tr>
+            </table>
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+
+    }
+</div>
